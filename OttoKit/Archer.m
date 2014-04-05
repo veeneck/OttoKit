@@ -51,7 +51,7 @@
         SKSpriteNode* arrow = [SKSpriteNode spriteNodeWithImageNamed:@"arrow"];
         arrow.position = CGPointMake(10, 0);
         arrow.zPosition = 1000;
-        arrow.physicsBody.dynamic = YES;
+        arrow.physicsBody.dynamic = NO;
         CGSize newSize = CGSizeMake(arrow.size.width, arrow.size.height);
         arrow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:newSize];
         arrow.physicsBody.categoryBitMask = 4;
@@ -61,15 +61,12 @@
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathMoveToPoint(path, NULL, 10, 0);
         float distanceToTarget = target.x - self.position.x;
-        NSLog(@"%f", target.x );
-        NSLog(@"%f", self.position.x);
-        NSLog(@"%f", distanceToTarget);
         float offset = distanceToTarget / 3;
         CGPathAddCurveToPoint(path, NULL,
-                              offset, arrow.position.y + 50,
-                              (offset * 2), arrow.position.y + 75,
+                              offset, arrow.position.y + 40,
+                              (offset * 2), arrow.position.y + 60,
                               distanceToTarget, arrow.position.y);
-        SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:NO duration:3.0];
+        SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:YES duration:distanceToTarget/500];
         
         [self addChild:arrow];
         [arrow runAction:followline];

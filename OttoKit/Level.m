@@ -27,7 +27,7 @@
         
         Squire* character = [[Squire alloc] initAtPosition:CGPointMake(700, 400)];
         [world addChild:character];
-        //[character movetoPoint:CGPointMake(0, 300)];
+        [character movetoPoint:CGPointMake(0, 300)];
         
         Squire* character2 = [[Squire alloc] initAtPosition:CGPointMake(700, 500)];
         [world addChild:character2];
@@ -37,29 +37,6 @@
         [world addChild:character3];
         [character3 attackPoint:CGPointMake(700, 500)];
         
-        
-        /*CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 800, 400);
-        CGPathAddLineToPoint(path, NULL, 600, 400);
-        SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:NO duration:3.0];*/
-        
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 700, 400);
-        CGPathAddCurveToPoint(path, NULL, 500, 500, 400, 600, 200, 400);
-        //CGPathAddLineToPoint(path, NULL, 200, 400);
-        SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:NO duration:3.0];
-        
-        /*CGMutablePathRef path2 = CGPathCreateMutable();
-        CGPathMoveToPoint(path2, NULL, 600, 400);
-        CGPathAddLineToPoint(path2, NULL, 400, 600);
-        SKAction *followline2 = [SKAction followPath:path2 asOffset:NO orientToPath:NO duration:3.5];
-        
-        CGMutablePathRef path3 = CGPathCreateMutable();
-        CGPathMoveToPoint(path3, NULL, 400, 600);
-        CGPathAddLineToPoint(path3, NULL, 0, 800);
-        SKAction *followline3 = [SKAction followPath:path3 asOffset:NO orientToPath:NO duration:5.0];*/
-        
-        [character runAction:[SKAction sequence:@[followline]]];
     
     }
     return self;

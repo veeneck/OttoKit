@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OttoKit/Level.m"
-            timestampString = "418410040.932061"
+            timestampString = "418414105.480065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-didBeginContact:"
             landmarkType = "5">
          </BreakpointContent>
