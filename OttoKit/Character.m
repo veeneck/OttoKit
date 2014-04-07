@@ -69,7 +69,7 @@
 }
 
 - (void)collidedWith:(SKPhysicsBody *)other {
-    if(other.categoryBitMask == 8) {
+    if(other.categoryBitMask == 0) {
         
     }
     else if(other.categoryBitMask != 4) {
@@ -150,7 +150,7 @@
 
 -(void)movetoPoint:(CGPoint)coords {
     CGFloat distance  = hypotf(self.position.x - coords.x, self.position.y - coords.y);
-    CGFloat speed = 30;
+    CGFloat speed = 100;
     SKAction* moveAction = [SKAction moveToX:coords.x duration:distance/speed];
     [self runAction:moveAction];
     animationState = APAAnimationStateWalk;

@@ -39,23 +39,18 @@
 
 - (void) configureRange {
     range = [[SKShapeNode alloc] init];
-    CGMutablePathRef circlePath = CGPathCreateMutable();
-    CGPathAddArc(circlePath, NULL, 0, 0, 400, 0, M_PI*2, NO);
-    range.position = CGPointMake( 0, 0);
-    range.lineWidth = 1;
-    range.strokeColor = [SKColor greenColor];
     
     range.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:400 center:CGPointMake(0, 0)];
     range.physicsBody.dynamic = NO;
     range.physicsBody.restitution = 0;
     range.physicsBody.allowsRotation = NO;
     
-    range.physicsBody.categoryBitMask = 8;
-    range.physicsBody.collisionBitMask = 36;
+    range.physicsBody.categoryBitMask = 0;
+    range.physicsBody.collisionBitMask = 0;
     range.physicsBody.contactTestBitMask = 1;
     range.name = @"range";
 
-    range.path = circlePath;
+
     [self addChild:range];
 }
 
@@ -135,7 +130,9 @@
         // Add to scene and run action
         SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:YES duration:duration];
         [[self scene] addChild:arrow];
-        [arrow runAction:followline];
+        [arrow runAction:[SKAction sequence:@[followline,[SKAction runBlock:^{
+            [arrow removeFromParent];
+        }]]]];
     }];
     
     return fire;

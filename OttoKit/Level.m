@@ -26,14 +26,36 @@
         
         NSMutableArray* paths = [self loadPathData];
         
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 200; i++) {
             Squire* character = [[Squire alloc] initAtPosition:CGPointMake(1000+(i*100), 500)];
             [world addChild:character];
             [character moveAlongPaths:paths];
         }
         
-        for(int i = 0; i < 5; i++) {
-            Archer* character = [[Archer alloc] initAtPosition:CGPointMake(300 + (i*75), 500)];
+        for(int i = 0; i < 200; i++) {
+            Squire* character = [[Squire alloc] initAtPosition:CGPointMake(1000+(i*100), 200)];
+            [world addChild:character];
+            [character movetoPoint:CGPointMake(0, 200)];
+        }
+        
+        for(int i = 0; i < 200; i++) {
+            Squire* character = [[Squire alloc] initAtPosition:CGPointMake(1000+(i*100), 100)];
+            [world addChild:character];
+            [character movetoPoint:CGPointMake(0, 100)];
+        }
+        
+        for(int i = 0; i < 15; i++) {
+            Archer* character = [[Archer alloc] initAtPosition:CGPointMake(100 + (i*16), 100 + (i*32))];
+            [world addChild:character];
+        }
+        
+        for(int i = 0; i < 15; i++) {
+            Archer* character = [[Archer alloc] initAtPosition:CGPointMake(150 + (i*16), 100 + (i*32))];
+            [world addChild:character];
+        }
+        
+        for(int i = 0; i < 15; i++) {
+            Archer* character = [[Archer alloc] initAtPosition:CGPointMake(200 + (i*16), 100 + (i*32))];
             [world addChild:character];
         }
         
