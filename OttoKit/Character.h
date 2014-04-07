@@ -26,13 +26,16 @@ typedef enum : uint8_t {
 - (NSArray*)loadFramesFromAtlas:(NSString *)atlasName baseFileName:(NSString*)baseFileName numberOfFrames:(int)numberOfFrames;
 - (void)resolveRequestedAnimation;
 - (void)movetoPoint:(CGPoint)coords;
+- (void)moveAlongPaths:(NSMutableArray*)paths;
 - (void)attackPoint:(CGPoint)coords;
+- (void)targetInRange:(SKNode *)enemy;
 - (void)configurePhysicsBody;
 - (void)collidedWith:(SKPhysicsBody *)other;
 
 @property (nonatomic) APAAnimationState requestedAnimation;
 @property (nonatomic, assign) float currentHealth;
 @property (nonatomic, assign) float maxHealth;
+@property (nonatomic, getter=isDying) BOOL dying;
 
 /* Assets - should be overridden for animated characters. */
 - (NSArray *)walkAnimationFrames;

@@ -23,50 +23,59 @@
         
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
-
         
-        Squire* character = [[Squire alloc] initAtPosition:CGPointMake(700, 400)];
-        [world addChild:character];
-        [character movetoPoint:CGPointMake(0, 300)];
+        NSMutableArray* paths = [self loadPathData];
         
-        Squire* character2 = [[Squire alloc] initAtPosition:CGPointMake(700, 500)];
-        [world addChild:character2];
-        //[character2 movetoPoint:CGPointMake(0, 500)];
+        for(int i = 0; i < 20; i++) {
+            Squire* character = [[Squire alloc] initAtPosition:CGPointMake(1000+(i*100), 500)];
+            [world addChild:character];
+            [character moveAlongPaths:paths];
+        }
         
-        Archer* character3 = [[Archer alloc] initAtPosition:CGPointMake(200, 500)];
-        [world addChild:character3];
-        [character3 attackPoint:CGPointMake(700, 500)];
+        for(int i = 0; i < 5; i++) {
+            Archer* character = [[Archer alloc] initAtPosition:CGPointMake(300 + (i*75), 500)];
+            [world addChild:character];
+        }
         
-    
+        
     }
     return self;
+}
+
+-(NSMutableArray*) loadPathData {
+    NSString* path = [[ NSBundle mainBundle] bundlePath];
+    NSString* finalPath = [ path stringByAppendingPathComponent:@"Levels.plist"];
+    NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+    
+    NSMutableArray* levelArray = [NSMutableArray arrayWithArray:[plistData objectForKey:@"Levels"]];
+    NSDictionary* levelDict = [NSDictionary dictionaryWithDictionary:[levelArray objectAtIndex:0]];
+    
+    NSMutableArray *allPaths = [levelDict objectForKey:@"Paths"];
+    
+    return [allPaths objectAtIndex:0];
 }
 
 -(void) didBeginContact:(SKPhysicsContact *)contact {
     
     // Either bodyA or bodyB in the collision could be a character.
     SKNode *node = contact.bodyA.node;
+    if([node.name isEqualToString:@"range"]) {
+        [(Character *)node.parent targetInRange:contact.bodyB.node];
+    }
+    
     if ([node isKindOfClass:[Character class]]) {
         [(Character *)node collidedWith:contact.bodyB];
     }
 
     // Check bodyB too.
     node = contact.bodyB.node;
+    
+    if([node.name isEqualToString:@"range"]) {
+        [(Character *)node.parent targetInRange:contact.bodyA.node];
+    }
+    
     if ([node isKindOfClass:[Character class]]) {
         [(Character *)node collidedWith:contact.bodyA];
-    }
-
-    // Handle collisions with projectiles.
-    if (contact.bodyA.categoryBitMask & 2 || contact.bodyB.categoryBitMask & 2) {
-        /*SKNode *projectile = (contact.bodyA.categoryBitMask & 2) ? contact.bodyA.node : contact.bodyB.node;
-        
-        [projectile runAction:[SKAction removeFromParent]];
-        
-        // Build up a "one shot" particle to indicate where the projectile hit.
-        SKEmitterNode *emitter = [[self sharedProjectileSparkEmitter] copy];
-        [self addNode:emitter atWorldLayer:APAWorldLayerAboveCharacter];
-        emitter.position = projectile.position;
-        APARunOneShotEmitter(emitter, 0.15f);*/
     }
     
 }

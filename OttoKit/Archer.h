@@ -9,7 +9,8 @@
 #import "Character.h"
 
 @interface Archer : Character {
-    CGPoint target;
+    Character* target;
+    SKShapeNode* range;
 }
 
 - (id)initAtPosition:(CGPoint)position;

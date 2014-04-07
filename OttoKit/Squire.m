@@ -39,7 +39,7 @@
     
     self.physicsBody.categoryBitMask = 1;
     self.physicsBody.collisionBitMask = 1;
-    self.physicsBody.contactTestBitMask = 4 | 2;
+    self.physicsBody.contactTestBitMask = 4;
 }
 
 - (void) loadSharedAssets {

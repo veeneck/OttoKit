@@ -20,6 +20,7 @@
 		C5CDE78018F05D96002A4A65 /* horde.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE77F18F05D96002A4A65 /* horde.mp3 */; };
 		C5CDE78718F06380002A4A65 /* arrow_spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE78518F06380002A4A65 /* arrow_spark.sks */; };
 		C5CDE78818F06380002A4A65 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE78618F06380002A4A65 /* spark.png */; };
+		C5CDE78A18F2FBD4002A4A65 /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE78918F2FBD4002A4A65 /* Levels.plist */; };
 		C5FD014C18EC5695002F0765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014B18EC5695002F0765 /* Foundation.framework */; };
 		C5FD014E18EC5695002F0765 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014D18EC5695002F0765 /* CoreGraphics.framework */; };
 		C5FD015018EC5695002F0765 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014F18EC5695002F0765 /* UIKit.framework */; };
@@ -71,6 +72,7 @@
 		C5CDE77F18F05D96002A4A65 /* horde.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = horde.mp3; sourceTree = "<group>"; };
 		C5CDE78518F06380002A4A65 /* arrow_spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = arrow_spark.sks; path = ../arrow_spark.sks; sourceTree = "<group>"; };
 		C5CDE78618F06380002A4A65 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = ../spark.png; sourceTree = "<group>"; };
+		C5CDE78918F2FBD4002A4A65 /* Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Levels.plist; sourceTree = "<group>"; };
 		C5FD014818EC5695002F0765 /* OttoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OttoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5FD014B18EC5695002F0765 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5FD014D18EC5695002F0765 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -246,6 +248,7 @@
 				C5FD015618EC5695002F0765 /* InfoPlist.strings */,
 				C5FD015918EC5695002F0765 /* main.m */,
 				C5FD015B18EC5695002F0765 /* OttoKit-Prefix.pch */,
+				C5CDE78918F2FBD4002A4A65 /* Levels.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C50338F318EDE1500072C1AA /* Snow.sks in Resources */,
+				C5CDE78A18F2FBD4002A4A65 /* Levels.plist in Resources */,
 				C5FD019418EC662A002F0765 /* dinconra.ttf in Resources */,
 				C5FD016E18EC5695002F0765 /* Images.xcassets in Resources */,
 				C5CDE78018F05D96002A4A65 /* horde.mp3 in Resources */,
