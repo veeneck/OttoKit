@@ -5,6 +5,29 @@
 	<key>Levels</key>
 	<array>
 		<dict>
+			<key>Waves</key>
+			<array>
+				<dict>
+					<key>WaitTime</key>
+					<integer>5</integer>
+					<key>Distance</key>
+					<integer>15</integer>
+					<key>Amount</key>
+					<integer>6</integer>
+					<key>Enemy</key>
+					<string>squire</string>
+				</dict>
+				<dict>
+					<key>WaitTime</key>
+					<integer>25</integer>
+					<key>Distance</key>
+					<integer>55</integer>
+					<key>Amount</key>
+					<integer>5</integer>
+					<key>Enemy</key>
+					<string>squire</string>
+				</dict>
+			</array>
 			<key>Paths</key>
 			<array>
 				<array>

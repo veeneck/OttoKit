@@ -1,22 +1,22 @@
 //
-//  Squire.m
+//  Enemy.m
 //  OttoKit
 //
-//  Created by Ryan Campbell on 4/4/14.
+//  Created by Ryan Campbell on 4/8/14.
 //  Copyright (c) 2014 Ryan Campbell. All rights reserved.
 //
 
-#import "Squire.h"
+#import "Enemy.h"
 #import "Character.h"
 
-@implementation Squire
+@implementation Enemy
 
 - (id)initAtPosition:(CGPoint)position {
     
     if(self = [super initWithSprite:@"soldier"]) {
         self.position = position;
         self.zPosition = 100;
-        self.name = @"squire";
+        self.name = @"enemy";
         [self configurePhysicsBody];
         [self loadSharedAssets];
     }
@@ -33,18 +33,18 @@
     CGSize newSize = CGSizeMake(self.size.width, self.size.height);
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:newSize.width/2];
     
-    self.physicsBody.dynamic = YES;
+    self.physicsBody.dynamic = NO;
     self.physicsBody.allowsRotation = NO;
     
-    self.physicsBody.categoryBitMask = APAColliderTypeHero;
+    self.physicsBody.categoryBitMask = APAColliderTypeWall;
     self.physicsBody.collisionBitMask = 0;
-    self.physicsBody.contactTestBitMask = APAColliderTypeWall;
+    self.physicsBody.contactTestBitMask = APAColliderTypeProjectile | APAColliderTypeHero ;
 }
 
 - (void) loadSharedAssets {
     sharedWalkAnimationFrames = [super loadFramesFromAtlas:@"soldier_walk" baseFileName:@"soldier_" numberOfFrames:8];
     sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"archer_shoot" baseFileName:@"shoot_" numberOfFrames:12];
-
+    
 };
 
 

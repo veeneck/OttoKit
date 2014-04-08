@@ -18,6 +18,15 @@ typedef enum : uint8_t {
     kAnimationStateCount
 } APAAnimationState;
 
+/* Bitmask for the different entities with physics bodies. */
+typedef enum : uint8_t {
+    APAColliderTypeHero             = 1,
+    APAColliderTypeGoblinOrBoss     = 2,
+    APAColliderTypeProjectile       = 4,
+    APAColliderTypeWall             = 8,
+    APAColliderTypeCave             = 16
+} APAColliderType;
+
 @interface Character : SKSpriteNode {
     APAAnimationState animationState;
 }
@@ -30,11 +39,13 @@ typedef enum : uint8_t {
 - (void)attackPoint:(CGPoint)coords;
 - (void)targetInRange:(SKNode *)enemy;
 - (void)configurePhysicsBody;
+-(void)makeEnemy;
 - (void)collidedWith:(SKPhysicsBody *)other;
 
 @property (nonatomic) APAAnimationState requestedAnimation;
 @property (nonatomic, assign) float currentHealth;
 @property (nonatomic, assign) float maxHealth;
+@property (nonatomic, assign) float walkingOffset;
 @property (nonatomic, getter=isDying) BOOL dying;
 
 /* Assets - should be overridden for animated characters. */

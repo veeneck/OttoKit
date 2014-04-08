@@ -14,8 +14,10 @@
     
     if(self = [super initWithImageNamed:sprite]) {
         [self setUpHealthMeter];
-
+        self.xScale = 0.5;
+        self.yScale = 0.5;
         self.dying = NO;
+        self.walkingOffset = 0;
     }
     
     return self;
@@ -72,7 +74,7 @@
     if(other.categoryBitMask == 0) {
         
     }
-    else if(other.categoryBitMask != 4) {
+    else if(other.categoryBitMask != APAColliderTypeProjectile) {
         [self removeAllActions];
     }
     else {
@@ -150,7 +152,7 @@
 
 -(void)movetoPoint:(CGPoint)coords {
     CGFloat distance  = hypotf(self.position.x - coords.x, self.position.y - coords.y);
-    CGFloat speed = 100;
+    CGFloat speed = 200;
     SKAction* moveAction = [SKAction moveToX:coords.x duration:distance/speed];
     [self runAction:moveAction];
     animationState = APAAnimationStateWalk;
@@ -171,12 +173,12 @@
         
         // Create a path to follow
         CGMutablePathRef pathing = CGPathCreateMutable();
-        CGPathMoveToPoint(pathing, NULL, startingX, startingY);
-        CGPathAddLineToPoint(pathing, NULL, [[pathDict objectForKey:@"x"]floatValue], [[pathDict objectForKey:@"y"]floatValue]);
+        CGPathMoveToPoint(pathing, NULL, startingX, startingY + self.walkingOffset);
+        CGPathAddLineToPoint(pathing, NULL, [[pathDict objectForKey:@"x"]floatValue], [[pathDict objectForKey:@"y"]floatValue] + self.walkingOffset);
         
         // Calculate time by speed/distance
         CGFloat distance  = hypotf(startingX - [[pathDict objectForKey:@"x"]floatValue], startingY - [[pathDict objectForKey:@"y"]floatValue]);
-        CGFloat speed = 100;
+        CGFloat speed = 30;
         
         // Add the action
         SKAction* move = [SKAction followPath:pathing asOffset:NO orientToPath:NO duration:distance/speed];
@@ -200,6 +202,10 @@
 
 -(void)attackPoint:(CGPoint)coords {
     // Overridden
+}
+
+-(void)makeEnemy {
+    
 }
 
 - (NSArray*)loadFramesFromAtlas:(NSString *)atlasName baseFileName:(NSString*)baseFileName numberOfFrames:(int)numberOfFrames {

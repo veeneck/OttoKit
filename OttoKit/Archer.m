@@ -28,26 +28,26 @@
     CGSize newSize = CGSizeMake(self.size.width, self.size.height);
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:newSize.width/2];
     
-    self.physicsBody.dynamic = YES;
+    self.physicsBody.dynamic = NO;
     self.physicsBody.restitution = 0;
     self.physicsBody.allowsRotation = YES;
     
-    self.physicsBody.categoryBitMask = 2;
-    self.physicsBody.collisionBitMask = 1;
-    self.physicsBody.contactTestBitMask = 1;
+    self.physicsBody.categoryBitMask = APAColliderTypeHero;
+    self.physicsBody.collisionBitMask = 0;
+    self.physicsBody.contactTestBitMask = APAColliderTypeWall;
 }
 
 - (void) configureRange {
     range = [[SKShapeNode alloc] init];
     
     range.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:400 center:CGPointMake(0, 0)];
-    range.physicsBody.dynamic = NO;
+    range.physicsBody.dynamic = YES;
     range.physicsBody.restitution = 0;
     range.physicsBody.allowsRotation = NO;
     
     range.physicsBody.categoryBitMask = 0;
     range.physicsBody.collisionBitMask = 0;
-    range.physicsBody.contactTestBitMask = 1;
+    range.physicsBody.contactTestBitMask = APAColliderTypeWall;
     range.name = @"range";
 
 
@@ -86,22 +86,23 @@
     float speedOffset = 50;
     SKAction* fire = [SKAction runBlock:^{
         
-        // Create an arrow sprite
-        SKSpriteNode* arrow = [SKSpriteNode spriteNodeWithImageNamed:@"arrow"];
+        SKSpriteNode* arrow = [SKSpriteNode spriteNodeWithTexture:sharedProjectile];
+        arrow.xScale = 0.5;
+        arrow.yScale = 0.5;
         arrow.position = CGPointMake(10, 0);
         arrow.zPosition = 1000;
         arrow.userData = [NSMutableDictionary
-                          dictionaryWithDictionary:@{
-                                                     @"damage" : [NSNumber numberWithFloat:20]
-                                                    }];
+                                     dictionaryWithDictionary:@{
+                                                                @"damage" : [NSNumber numberWithFloat:50]
+                                                                }];
         
         // Set up arrow physics
-        CGSize newSize = CGSizeMake(arrow.size.width, arrow.size.height);
+        CGSize newSize = CGSizeMake(sharedProjectile.size.width, sharedProjectile.size.height);
         arrow.physicsBody.dynamic = NO;
         arrow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:newSize];
-        arrow.physicsBody.categoryBitMask = 4;
-        arrow.physicsBody.collisionBitMask = 1;
-        arrow.physicsBody.contactTestBitMask = 1;
+        arrow.physicsBody.categoryBitMask = APAColliderTypeProjectile;
+        arrow.physicsBody.collisionBitMask = 0;
+        arrow.physicsBody.contactTestBitMask = 0;
         
         // Determine how far away target is, and how to get there
         float distanceX = (self.position.x - coords.x - speedOffset)*-1;
@@ -113,19 +114,25 @@
         float duration = distanceX / 500;
         if(duration <= 0) {
             duration = duration * -1;
-            self.xScale = -1;
+            if(self.xScale != -0.5) {
+                self.xScale = -0.5;
+            }
         }
         else {
-            self.xScale = 1;
+            if(self.xScale != 0.5) {
+                self.xScale = 0.5;
+            }
         }
         
         // Make a path
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathMoveToPoint(path, NULL, self.position.x, self.position.y);
-        CGPathAddCurveToPoint(path, NULL,
+        /*CGPathAddCurveToPoint(path, NULL,
                               self.position.x + offsetX, self.position.y + offsetY,
                               self.position.x + (offsetX * 2), self.position.y + (offsetY * 2),
-                              coords.x - speedOffset, coords.y);
+                              coords.x - speedOffset, coords.y);*/
+        
+        CGPathAddLineToPoint(path, NULL, coords.x-speedOffset, coords.y);
         
         // Add to scene and run action
         SKAction *followline = [SKAction followPath:path asOffset:NO orientToPath:YES duration:duration];
@@ -141,6 +148,7 @@
 - (void) loadSharedAssets {
     sharedWalkAnimationFrames = [super loadFramesFromAtlas:@"soldier_walk" baseFileName:@"soldier_" numberOfFrames:8];
     sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"archer_shoot" baseFileName:@"shoot_" numberOfFrames:12];
+    sharedProjectile = [SKTexture textureWithImageNamed:@"arrow"];
 };
 
 static NSArray *sharedWalkAnimationFrames = nil;
@@ -151,6 +159,11 @@ static NSArray *sharedWalkAnimationFrames = nil;
 static NSArray *sharedAttackAnimationFrames = nil;
 - (NSArray *)attackAnimationFrames {
     return sharedAttackAnimationFrames;
+}
+
+static SKTexture *sharedProjectile = nil;
+- (SKTexture *)sharedProjectile {
+    return sharedProjectile;
 }
 
 @end
