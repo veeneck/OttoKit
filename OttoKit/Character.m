@@ -178,7 +178,7 @@
         
         // Calculate time by speed/distance
         CGFloat distance  = hypotf(startingX - [[pathDict objectForKey:@"x"]floatValue], startingY - [[pathDict objectForKey:@"y"]floatValue]);
-        CGFloat speed = 30;
+        CGFloat speed = 100;
         
         // Add the action
         SKAction* move = [SKAction followPath:pathing asOffset:NO orientToPath:NO duration:distance/speed];

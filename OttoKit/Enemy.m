@@ -27,6 +27,7 @@
 - (void)collidedWith:(SKPhysicsBody *)other {
     [super collidedWith:other];
     [self runAction:[SKAction setTexture:[SKTexture textureWithImageNamed:@"soldier"]]];
+    [self attackPoint:self.position];
 }
 
 - (void)configurePhysicsBody {
@@ -43,9 +44,14 @@
 
 - (void) loadSharedAssets {
     sharedWalkAnimationFrames = [super loadFramesFromAtlas:@"soldier_walk" baseFileName:@"soldier_" numberOfFrames:8];
-    sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"archer_shoot" baseFileName:@"shoot_" numberOfFrames:12];
+    sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"soldier_attack" baseFileName:@"soldier_" numberOfFrames:5];
     
 };
+
+-(void)attackPoint:(CGPoint)coords {
+    animationState = APAAnimationStateAttack;
+    [super resolveRequestedAnimation];
+}
 
 
 static NSArray *sharedWalkAnimationFrames = nil;
