@@ -11,6 +11,7 @@
 #import "Archer.h"
 #import "Ranged.h"
 #import "Melee.h"
+#import "Catapult.h"
 #import "Hud.h"
 
 @implementation Level
@@ -38,8 +39,8 @@
         
         [self createTowerPoints:CGPointMake(500, 500) facing:1];
         [self createTowerPoints:CGPointMake(400, 400) facing:2];
-        
         [self createSoldierPoints:CGPointMake(200, 500) facing:1];
+        [self createCatapultPoints:CGPointMake(100, 700)];
         
         [self runWaves];
         
@@ -98,6 +99,12 @@
     [world addChild:tower];
 }
 
+-(void) createCatapultPoints:(CGPoint)coords {
+    Catapult* tower = [[Catapult alloc] initAtPosition:coords];
+    [world addChild:tower];
+    [tower setWorldLayer:world];
+}
+
 -(void) addTower:(SKNode*)territory {
     Tower *tower;
     if([territory.name isEqualToString:@"Ranged"]) {
@@ -122,8 +129,10 @@
     if([node.name isEqualToString:@"range"]) {
         [(Character *)node.parent targetInRange:contact.bodyB.node];
     }
-    
-    if ([node isKindOfClass:[Character class]]) {
+    else if([node.name isEqualToString:@"range_catapult"]) {
+        [(Catapult*)node.parent targetInRange:contact.bodyB.node];
+    }
+    else if ([node isKindOfClass:[Character class]]) {
         [(Character *)node collidedWith:contact.bodyB];
         if([(Character *)node isDying]) {
             [HUD addGold:25];
@@ -136,8 +145,10 @@
     if([node.name isEqualToString:@"range"]) {
         [(Character *)node.parent targetInRange:contact.bodyA.node];
     }
-    
-    if ([node isKindOfClass:[Character class]]) {
+    else if([node.name isEqualToString:@"range_catapult"]) {
+        [(Catapult*)node.parent targetInRange:contact.bodyA.node];
+    }
+    else if ([node isKindOfClass:[Character class]]) {
         [(Character *)node collidedWith:contact.bodyA];
         if([(Character *)node isDying]) {
             [HUD addGold:25];
@@ -195,6 +206,7 @@
     backgroundMusicPlayer.volume = 1;
     [backgroundMusicPlayer prepareToPlay];
     [backgroundMusicPlayer play];
+    [self runAction:[SKAction playSoundFileNamed:@"warhorn.wav" waitForCompletion:NO]];
 }
 
 @end

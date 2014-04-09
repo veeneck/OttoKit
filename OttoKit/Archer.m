@@ -34,7 +34,7 @@
     
     self.physicsBody.categoryBitMask = APAColliderTypeHero;
     self.physicsBody.collisionBitMask = 0;
-    self.physicsBody.contactTestBitMask = APAColliderTypeWall;
+    self.physicsBody.contactTestBitMask = APAColliderTypeEnemy;
 }
 
 - (void) configureRange {
@@ -47,7 +47,7 @@
     
     range.physicsBody.categoryBitMask = 0;
     range.physicsBody.collisionBitMask = 0;
-    range.physicsBody.contactTestBitMask = APAColliderTypeWall;
+    range.physicsBody.contactTestBitMask = APAColliderTypeEnemy;
     range.name = @"range";
 
 
@@ -67,7 +67,11 @@
 -(void)attackPoint:(CGPoint)coords {
     [range removeFromParent];
     SKAction* fire = [self shootArrow:coords];
-    SKAction *sequence2 = [SKAction sequence:@[[SKAction waitForDuration: 0.7], fire, [SKAction waitForDuration: 0.8]]];
+    SKAction *sequence2 = [SKAction sequence:@[
+                                               [SKAction waitForDuration: 0.7],
+                                               fire,
+                                               [SKAction playSoundFileNamed:@"arrow.wav" waitForCompletion:NO],
+                                               [SKAction waitForDuration: 0.8]]];
     [self runAction:sequence2 completion:^{
         if(!target.dying) {
             [self attackPoint:target.position];
@@ -106,10 +110,10 @@
         
         // Determine how far away target is, and how to get there
         float distanceX = (self.position.x - coords.x - speedOffset)*-1;
-        float offsetX = distanceX / 3;
+        //float offsetX = distanceX / 3;
         
-        float distanceY = (self.position.y - coords.y)*-1;
-        float offsetY = distanceY / 3;
+        //float distanceY = (self.position.y - coords.y)*-1;
+        //float offsetY = distanceY / 3;
         
         float duration = distanceX / 500;
         if(duration <= 0) {

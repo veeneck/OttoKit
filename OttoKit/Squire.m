@@ -38,15 +38,37 @@
     
     self.physicsBody.categoryBitMask = APAColliderTypeHero;
     self.physicsBody.collisionBitMask = 0;
-    self.physicsBody.contactTestBitMask = APAColliderTypeWall;
+    self.physicsBody.contactTestBitMask = APAColliderTypeEnemy;
 }
 
 - (void) loadSharedAssets {
     sharedWalkAnimationFrames = [super loadFramesFromAtlas:@"soldier_walk" baseFileName:@"soldier_" numberOfFrames:8];
-    sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"archer_shoot" baseFileName:@"shoot_" numberOfFrames:12];
-
+    sharedAttackAnimationFrames = [super loadFramesFromAtlas:@"soldier_attack" baseFileName:@"soldier_" numberOfFrames:5];
 };
 
+-(void) targetInRange:(SKNode *)enemy {
+    self.engaged = YES;
+    target = (Character *)enemy;
+    [self attackPoint:enemy.position];
+}
+
+-(void)attackPoint:(CGPoint)coords {
+    SKAction *sequence2 = [SKAction sequence:@[[SKAction waitForDuration: 0.6]]];
+    [self runAction:sequence2 completion:^{
+        if(!target.dying) {
+            [target doDamageWithAmount:20];
+            [self attackPoint:target.position];
+        }
+        else {
+            self.engaged = NO;
+            target = nil;
+            [self runAction:[SKAction setTexture:[SKTexture textureWithImageNamed:@"soldier"]]];
+        }
+    }];
+    
+    animationState = APAAnimationStateAttack;
+    [super resolveRequestedAnimation];
+}
 
 static NSArray *sharedWalkAnimationFrames = nil;
 - (NSArray *)walkAnimationFrames {

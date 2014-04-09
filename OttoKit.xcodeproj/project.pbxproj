@@ -15,6 +15,8 @@
 		C52E2C4018EE22DC005C2657 /* soldier_walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C52E2C3F18EE22DC005C2657 /* soldier_walk.atlas */; };
 		C52E2C4418EEF519005C2657 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E2C4318EEF519005C2657 /* Character.m */; };
 		C52E2C4C18EEFEA5005C2657 /* Squire.m in Sources */ = {isa = PBXBuildFile; fileRef = C52E2C4B18EEFEA5005C2657 /* Squire.m */; };
+		C58A360718F5CA3A00A95F96 /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = C58A360618F5CA3A00A95F96 /* death.wav */; };
+		C58A361118F5D4F600A95F96 /* Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = C58A361018F5D4F600A95F96 /* Effects.m */; };
 		C5CDE77C18EF3426002A4A65 /* Archer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CDE77B18EF3426002A4A65 /* Archer.m */; };
 		C5CDE77E18EF3CB6002A4A65 /* archer_shoot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE77D18EF3CB6002A4A65 /* archer_shoot.atlas */; };
 		C5CDE78018F05D96002A4A65 /* horde.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE77F18F05D96002A4A65 /* horde.mp3 */; };
@@ -27,6 +29,13 @@
 		C5CDE79818F47EB6002A4A65 /* Melee.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CDE79718F47EB6002A4A65 /* Melee.m */; };
 		C5CDE79B18F48E2F002A4A65 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CDE79A18F48E2F002A4A65 /* Enemy.m */; };
 		C5CDE79D18F49F46002A4A65 /* soldier_attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C5CDE79C18F49F46002A4A65 /* soldier_attack.atlas */; };
+		C5DC894018F576BB00536DF7 /* Catapult.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DC893F18F576BB00536DF7 /* Catapult.m */; };
+		C5DC894218F5893300536DF7 /* catapult_fire.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894118F5893300536DF7 /* catapult_fire.atlas */; };
+		C5DC894418F59E2D00536DF7 /* arrow.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894318F59E2D00536DF7 /* arrow.wav */; };
+		C5DC894918F5A68000536DF7 /* catapult.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894818F5A68000536DF7 /* catapult.wav */; };
+		C5DC894B18F5C2D000536DF7 /* warhorn.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894A18F5C2D000536DF7 /* warhorn.wav */; };
+		C5DC894D18F5C3FF00536DF7 /* catapult2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894C18F5C3FF00536DF7 /* catapult2.wav */; };
+		C5DC894F18F5C85A00536DF7 /* impact.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5DC894E18F5C85A00536DF7 /* impact.wav */; };
 		C5FD014C18EC5695002F0765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014B18EC5695002F0765 /* Foundation.framework */; };
 		C5FD014E18EC5695002F0765 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014D18EC5695002F0765 /* CoreGraphics.framework */; };
 		C5FD015018EC5695002F0765 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FD014F18EC5695002F0765 /* UIKit.framework */; };
@@ -72,6 +81,9 @@
 		C52E2C4318EEF519005C2657 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		C52E2C4A18EEFEA5005C2657 /* Squire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squire.h; sourceTree = "<group>"; };
 		C52E2C4B18EEFEA5005C2657 /* Squire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squire.m; sourceTree = "<group>"; };
+		C58A360618F5CA3A00A95F96 /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
+		C58A360F18F5D4F600A95F96 /* Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Effects.h; sourceTree = "<group>"; };
+		C58A361018F5D4F600A95F96 /* Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Effects.m; sourceTree = "<group>"; };
 		C5CDE77A18EF3426002A4A65 /* Archer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Archer.h; sourceTree = "<group>"; };
 		C5CDE77B18EF3426002A4A65 /* Archer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Archer.m; sourceTree = "<group>"; };
 		C5CDE77D18EF3CB6002A4A65 /* archer_shoot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = archer_shoot.atlas; sourceTree = "<group>"; };
@@ -90,6 +102,14 @@
 		C5CDE79918F48E2F002A4A65 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		C5CDE79A18F48E2F002A4A65 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		C5CDE79C18F49F46002A4A65 /* soldier_attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = soldier_attack.atlas; sourceTree = "<group>"; };
+		C5DC893E18F576BB00536DF7 /* Catapult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catapult.h; sourceTree = "<group>"; };
+		C5DC893F18F576BB00536DF7 /* Catapult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Catapult.m; sourceTree = "<group>"; };
+		C5DC894118F5893300536DF7 /* catapult_fire.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = catapult_fire.atlas; sourceTree = "<group>"; };
+		C5DC894318F59E2D00536DF7 /* arrow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arrow.wav; sourceTree = "<group>"; };
+		C5DC894818F5A68000536DF7 /* catapult.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catapult.wav; sourceTree = "<group>"; };
+		C5DC894A18F5C2D000536DF7 /* warhorn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = warhorn.wav; sourceTree = "<group>"; };
+		C5DC894C18F5C3FF00536DF7 /* catapult2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catapult2.wav; sourceTree = "<group>"; };
+		C5DC894E18F5C85A00536DF7 /* impact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = impact.wav; sourceTree = "<group>"; };
 		C5FD014818EC5695002F0765 /* OttoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OttoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5FD014B18EC5695002F0765 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5FD014D18EC5695002F0765 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -199,6 +219,15 @@
 			name = Particles;
 			sourceTree = "<group>";
 		};
+		C58A360E18F5D4D200A95F96 /* Phalanx */ = {
+			isa = PBXGroup;
+			children = (
+				C58A360F18F5D4F600A95F96 /* Effects.h */,
+				C58A361018F5D4F600A95F96 /* Effects.m */,
+			);
+			name = Phalanx;
+			sourceTree = "<group>";
+		};
 		C5CDE77318EF0753002A4A65 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +244,8 @@
 				C5CDE79018F443A2002A4A65 /* Ranged.m */,
 				C5CDE79618F47EB6002A4A65 /* Melee.h */,
 				C5CDE79718F47EB6002A4A65 /* Melee.m */,
+				C5DC893E18F576BB00536DF7 /* Catapult.h */,
+				C5DC893F18F576BB00536DF7 /* Catapult.m */,
 			);
 			name = Towers;
 			sourceTree = "<group>";
@@ -262,6 +293,7 @@
 		C5FD015318EC5695002F0765 /* OttoKit */ = {
 			isa = PBXGroup;
 			children = (
+				C58A360E18F5D4D200A95F96 /* Phalanx */,
 				C5CDE79218F46A75002A4A65 /* Interface */,
 				C5CDE77318EF0753002A4A65 /* Utilities */,
 				C52E2C4918EEFA1D005C2657 /* Particles */,
@@ -276,6 +308,7 @@
 				C5FD016518EC5695002F0765 /* ViewController.h */,
 				C5FD016618EC5695002F0765 /* ViewController.m */,
 				C5FD016D18EC5695002F0765 /* Images.xcassets */,
+				C5DC894118F5893300536DF7 /* catapult_fire.atlas */,
 				C5CDE79C18F49F46002A4A65 /* soldier_attack.atlas */,
 				C5CDE77D18EF3CB6002A4A65 /* archer_shoot.atlas */,
 				C52E2C3F18EE22DC005C2657 /* soldier_walk.atlas */,
@@ -319,7 +352,13 @@
 			isa = PBXGroup;
 			children = (
 				C5CDE77F18F05D96002A4A65 /* horde.mp3 */,
+				C5DC894818F5A68000536DF7 /* catapult.wav */,
+				C5DC894318F59E2D00536DF7 /* arrow.wav */,
+				C5DC894A18F5C2D000536DF7 /* warhorn.wav */,
+				C58A360618F5CA3A00A95F96 /* death.wav */,
 				C5FD019518EC942B002F0765 /* gameandcode_mockup_forryan.mov */,
+				C5DC894C18F5C3FF00536DF7 /* catapult2.wav */,
+				C5DC894E18F5C85A00536DF7 /* impact.wav */,
 				C50338EF18EDBC910072C1AA /* Otto_interface_snd_03.mp3 */,
 				C5FD018E18EC5F9E002F0765 /* otto_basetrack.mp3 */,
 			);
@@ -410,12 +449,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C50338F318EDE1500072C1AA /* Snow.sks in Resources */,
+				C5DC894918F5A68000536DF7 /* catapult.wav in Resources */,
+				C5DC894218F5893300536DF7 /* catapult_fire.atlas in Resources */,
 				C5CDE78A18F2FBD4002A4A65 /* Levels.plist in Resources */,
 				C5FD019418EC662A002F0765 /* dinconra.ttf in Resources */,
 				C5FD016E18EC5695002F0765 /* Images.xcassets in Resources */,
 				C5CDE78018F05D96002A4A65 /* horde.mp3 in Resources */,
 				C5FD016418EC5695002F0765 /* Main_iPad.storyboard in Resources */,
 				C50338F018EDBC910072C1AA /* Otto_interface_snd_03.mp3 in Resources */,
+				C5DC894B18F5C2D000536DF7 /* warhorn.wav in Resources */,
 				C52E2C4018EE22DC005C2657 /* soldier_walk.atlas in Resources */,
 				C50338F418EDE1500072C1AA /* spark.png in Resources */,
 				C5CDE79D18F49F46002A4A65 /* soldier_attack.atlas in Resources */,
@@ -424,8 +466,12 @@
 				C5CDE78818F06380002A4A65 /* spark.png in Resources */,
 				C5FD018F18EC5F9E002F0765 /* otto_basetrack.mp3 in Resources */,
 				C5CDE78718F06380002A4A65 /* arrow_spark.sks in Resources */,
+				C5DC894418F59E2D00536DF7 /* arrow.wav in Resources */,
+				C58A360718F5CA3A00A95F96 /* death.wav in Resources */,
 				C5CDE77E18EF3CB6002A4A65 /* archer_shoot.atlas in Resources */,
+				C5DC894F18F5C85A00536DF7 /* impact.wav in Resources */,
 				C5FD015818EC5695002F0765 /* InfoPlist.strings in Resources */,
+				C5DC894D18F5C3FF00536DF7 /* catapult2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +494,7 @@
 				C52E2C4418EEF519005C2657 /* Character.m in Sources */,
 				C5CDE79118F443A2002A4A65 /* Ranged.m in Sources */,
 				C5FD018C18EC56D1002F0765 /* MainMenu.m in Sources */,
+				C58A361118F5D4F600A95F96 /* Effects.m in Sources */,
 				C5CDE79B18F48E2F002A4A65 /* Enemy.m in Sources */,
 				C5CDE78E18F43B5D002A4A65 /* Tower.m in Sources */,
 				C5FD016718EC5695002F0765 /* ViewController.m in Sources */,
@@ -456,6 +503,7 @@
 				C50338EE18EDB50F0072C1AA /* Story.m in Sources */,
 				C5CDE79518F46AFA002A4A65 /* Hud.m in Sources */,
 				C5CDE77C18EF3426002A4A65 /* Archer.m in Sources */,
+				C5DC894018F576BB00536DF7 /* Catapult.m in Sources */,
 				C5FD015A18EC5695002F0765 /* main.m in Sources */,
 				C5CDE79818F47EB6002A4A65 /* Melee.m in Sources */,
 			);

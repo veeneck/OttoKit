@@ -21,9 +21,9 @@
 					<key>WaitTime</key>
 					<integer>25</integer>
 					<key>Distance</key>
-					<integer>55</integer>
+					<integer>15</integer>
 					<key>Amount</key>
-					<integer>5</integer>
+					<integer>16</integer>
 					<key>Enemy</key>
 					<string>squire</string>
 				</dict>

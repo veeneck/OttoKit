@@ -9,7 +9,6 @@
 #import "Character.h"
 
 @interface Archer : Character {
-    Character* target;
     SKShapeNode* range;
 }
 

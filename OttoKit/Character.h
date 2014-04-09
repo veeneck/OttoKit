@@ -23,12 +23,13 @@ typedef enum : uint8_t {
     APAColliderTypeHero             = 1,
     APAColliderTypeGoblinOrBoss     = 2,
     APAColliderTypeProjectile       = 4,
-    APAColliderTypeWall             = 8,
+    APAColliderTypeEnemy            = 8,
     APAColliderTypeCave             = 16
 } APAColliderType;
 
 @interface Character : SKSpriteNode {
     APAAnimationState animationState;
+    Character* target;
 }
 
 - (id)initWithSprite:(NSString *)sprite;
@@ -41,12 +42,15 @@ typedef enum : uint8_t {
 - (void)configurePhysicsBody;
 -(void)makeEnemy;
 - (void)collidedWith:(SKPhysicsBody *)other;
+-(void) doDamageWithAmount:(float)amount;
 
 @property (nonatomic) APAAnimationState requestedAnimation;
 @property (nonatomic, assign) float currentHealth;
 @property (nonatomic, assign) float maxHealth;
 @property (nonatomic, assign) float walkingOffset;
 @property (nonatomic, getter=isDying) BOOL dying;
+@property (nonatomic, getter=isEngaged) BOOL engaged;
+
 
 /* Assets - should be overridden for animated characters. */
 - (NSArray *)walkAnimationFrames;

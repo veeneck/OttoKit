@@ -17,6 +17,7 @@
         self.xScale = 0.5;
         self.yScale = 0.5;
         self.dying = NO;
+        self.engaged = NO;
         self.walkingOffset = 0;
     }
     
@@ -30,6 +31,7 @@
 -(void) setUpHealthMeter {
     
     _maxHealth = 100;
+
     _currentHealth = _maxHealth;
     
     SKSpriteNode* healthBar = [SKSpriteNode spriteNodeWithImageNamed:@"healthbar"];
@@ -60,6 +62,7 @@
         self.dying = YES;
         _currentHealth = 0;
         [self childNodeWithName:@"green"].xScale = _currentHealth / _maxHealth;
+        [[self scene] runAction:[SKAction playSoundFileNamed:@"death.wav" waitForCompletion:NO]];
         [self removeFromParent];
     }
     
@@ -71,17 +74,31 @@
 }
 
 - (void)collidedWith:(SKPhysicsBody *)other {
+    // If crossing into someone elses range, ignore it
     if(other.categoryBitMask == 0) {
-        
+        return;
     }
-    else if(other.categoryBitMask != APAColliderTypeProjectile) {
-        [self removeAllActions];
-    }
-    else {
+    
+    // If getting hit by a projectile, damage yourself
+    if(other.categoryBitMask == APAColliderTypeProjectile) {
         float damage = [[other.node.userData objectForKey:@"damage"]floatValue];
         [self doDamageWithAmount:damage];
         [self addEmitter];
-        [other.node runAction:[SKAction removeFromParent]];
+    }
+    else {
+        // if running into another soldier, start attacking
+        if(other.categoryBitMask == APAColliderTypeEnemy) {
+            Character* bogey = (Character*)other.node;
+            if(!self.engaged && !bogey.engaged) {
+                [self removeAllActions];
+                [self targetInRange:bogey];
+                [bogey removeAllActions];
+                [bogey targetInRange:self];
+            }
+        }
+        else {
+            
+        }
     }
 }
 
@@ -178,7 +195,7 @@
         
         // Calculate time by speed/distance
         CGFloat distance  = hypotf(startingX - [[pathDict objectForKey:@"x"]floatValue], startingY - [[pathDict objectForKey:@"y"]floatValue]);
-        CGFloat speed = 100;
+        CGFloat speed = 30;
         
         // Add the action
         SKAction* move = [SKAction followPath:pathing asOffset:NO orientToPath:NO duration:distance/speed];
